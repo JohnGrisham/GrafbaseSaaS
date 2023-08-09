@@ -26,7 +26,7 @@ const STRIPE_PUBLISHABLE_KEY =
   '';
 
 Auth.configure({
-  region: process.env.NEXT_PUBLIC_AWS_REGION as string,
+  region: process.env.NEXT_PUBLIC_AWS_COGNITO_REGION as string,
   mandatorySignIn: false,
   userPoolId: process.env.NEXT_PUBLIC_USER_POOL_ID as string,
   userPoolWebClientId: process.env.NEXT_PUBLIC_USER_POOL_CLIENT_ID as string,

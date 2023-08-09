@@ -45,9 +45,9 @@ Import the project in grafbase: https://grafbase.com/docs/getting-started/first-
 `grafbase/.env` example
 
 ```
-AWS_ACCESS_KEY=${AWS Key}
-AWS_SECRET_ACCESS_KEY=${AWS Secret}
-AWS_REGION=${AWS Region}
+AWS_COGNITO_ACCESS_KEY=${AWS Key}
+AWS_COGNITO_SECRET_ACCESS_KEY=${AWS Secret}
+AWS_COGNITO_REGION=${AWS Region}
 COGNITO_USER_POOL_ID=${Userpool ID}
 NEXTAUTH_SECRET=${Next Auth Secret}
 ISSUER_URL=https://grafbase.com
@@ -61,7 +61,7 @@ The grafbase cli can be ran to use the pathfinder playground using `yarn dev:gql
 `apps/web/.env` example
 
 ```
-NEXT_PUBLIC_AWS_REGION=${AWS Region}
+NEXT_PUBLIC_AWS_COGNITO_REGION=${AWS Region}
 NEXT_PUBLIC_COGNITO_DOMAIN=https://${your-app}.auth.${region}.amazoncognito.com
 ISSUER_URL=https://grafbase.com
 NEXTAUTH_SECRET={Next Auth Secret}

@@ -12,10 +12,10 @@ export default async function Resolver(user: User) {
 
     const cognito = new CognitoIdentityProviderClient({
       credentials: {
-        accessKeyId: process.env.AWS_ACCESS_KEY as string,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string,
+        accessKeyId: process.env.AWS_COGNITO_ACCESS_KEY as string,
+        secretAccessKey: process.env.AWS_COGNITO_SECRET_ACCESS_KEY as string,
       },
-      region: process.env.AWS_REGION || 'us-east-1',
+      region: process.env.AWS_COGNITO_REGION || 'us-east-1',
     });
 
     const command = new AdminGetUserCommand({

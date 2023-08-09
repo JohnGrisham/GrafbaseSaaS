@@ -75,7 +75,7 @@
       "dependsOn": [],
       "env": [
         "AUTH_BEARER_TOKEN",
-        "NEXT_PUBLIC_AWS_REGION",
+        "NEXT_PUBLIC_AWS_COGNITO_REGION",
         "NEXT_PUBLIC_COGNITO_DOMAIN",
         "ISSUER_URL",
         "NEXTAUTH_SECRET",
@@ -94,9 +94,9 @@
     "grafbase#build": {
       "dependsOn": [],
       "env": [
-        "AWS_REGION",
-        "AWS_ACCESS_KEY",
-        "AWS_SECRET_ACCESS_KEY",
+        "AWS_COGNITO_REGION",
+        "AWS_COGNITO_ACCESS_KEY",
+        "AWS_COGNITO_SECRET_ACCESS_KEY",
         "COGNITO_USER_POOL_ID",
         "STRIPE_SECRET_KEY",
         "STRIPE_SECRET_KEY_LIVE"
