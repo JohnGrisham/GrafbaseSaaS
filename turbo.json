@@ -1,0 +1,109 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "codegen": {
+      "cache": false,
+      "dependsOn": []
+    },
+    "dev": {
+      "cache": false,
+      "dependsOn": [
+        "^dev",
+        "auth#build",
+        "client#build",
+        "payments-client#build",
+        "payments-server#build"
+      ]
+    },
+    "dev:gql": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": []
+    },
+    "generate-tailwind-theme": {
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
+    "storybook": {
+      "dependsOn": []
+    },
+    "test": {
+      "dependsOn": []
+    },
+    "auth#build": {
+      "dependsOn": ["client#build"],
+      "env": [
+        "API_KEY",
+        "COGNITO_CLIENT_ID",
+        "COGNITO_CLIENT_SECRET",
+        "COGNITO_ISSUER",
+        "GITHUB_ID",
+        "GITHUB_SECRET",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "ISSUER_URL",
+        "NEXTAUTH_SECRET",
+        "NEXTAUTH_URL",
+        "STRIPE_TRIAL_PRODUCT_NAME"
+      ]
+    },
+    "client#build": {
+      "dependsOn": [],
+      "env": ["API_ENDPOINT"]
+    },
+    "core#build": {
+      "dependsOn": [],
+      "env": ["NEXT_PUBLIC_ROOT_URL"]
+    },
+    "payments-server#build": {
+      "dependsOn": [],
+      "env": [
+        "STRIPE_SECRET_KEY",
+        "STRIPE_SECRET_KEY_LIVE",
+        "STRIPE_WEBHOOK_SECRET",
+        "STRIPE_WEBHOOK_SECRET_LIVE"
+      ]
+    },
+    "payments-client#build": {
+      "dependsOn": []
+    },
+    "web#build": {
+      "dependsOn": [],
+      "env": [
+        "AUTH_BEARER_TOKEN",
+        "NEXT_PUBLIC_AWS_REGION",
+        "NEXT_PUBLIC_COGNITO_DOMAIN",
+        "ISSUER_URL",
+        "NEXTAUTH_SECRET",
+        "NEXT_PUBLIC_DYNAMIC_ROOT",
+        "NEXT_PUBLIC_MULTIDOMAIN",
+        "NEXT_PUBLIC_ROOT_URL",
+        "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_LIVE",
+        "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
+        "NEXT_PUBLIC_USER_POOL_ID",
+        "NEXT_PUBLIC_USER_POOL_CLIENT_ID",
+        "NODE_ENV",
+        "TEAM_ID_VERCEL",
+        "VERCEL"
+      ]
+    },
+    "grafbase#build": {
+      "dependsOn": [],
+      "env": [
+        "AWS_REGION",
+        "AWS_ACCESS_KEY",
+        "AWS_SECRET_ACCESS_KEY",
+        "COGNITO_USER_POOL_ID",
+        "STRIPE_SECRET_KEY",
+        "STRIPE_SECRET_KEY_LIVE"
+      ]
+    },
+    "lint": {
+      "outputs": []
+    }
+  }
+}

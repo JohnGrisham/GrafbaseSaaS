@@ -1,0 +1,74 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
+import tailwindConfig from '../../tailwind.config.js';
+
+<Meta title="Colors" />
+
+<ColorPalette>
+  <ColorItem
+    title="theme.colors"
+    colors={{
+      primary: process.env.PRIMARY_500,
+      secondary: process.env.SECONDARY_500,
+      accent: process.env.ACCENT_500,
+      black: tailwindConfig.theme.colors.black,
+      white: tailwindConfig.theme.colors.white,
+    }}
+  />
+  <ColorItem
+    title="theme.color.primary"
+    colors={{
+      50: process.env.PRIMARY_50,
+      100: process.env.PRIMARY_100,
+      200: process.env.PRIMARY_200,
+      300: process.env.PRIMARY_300,
+      400: process.env.PRIMARY_400,
+      500: process.env.PRIMARY_500,
+      600: process.env.PRIMARY_600,
+      700: process.env.PRIMARY_700,
+      800: process.env.PRIMARY_800,
+      900: process.env.PRIMARY_900,
+    }}
+  />
+  <ColorItem
+    title="theme.color.secondary"
+    colors={{
+      50: process.env.SECONDARY_50,
+      100: process.env.SECONDARY_100,
+      200: process.env.SECONDARY_200,
+      300: process.env.SECONDARY_300,
+      400: process.env.SECONDARY_400,
+      500: process.env.SECONDARY_500,
+      600: process.env.SECONDARY_600,
+      700: process.env.SECONDARY_700,
+      800: process.env.SECONDARY_800,
+      900: process.env.SECONDARY_900,
+    }}
+  />
+  <ColorItem
+    title="theme.color.accent"
+    colors={{
+      50: process.env.ACCENT_50,
+      100: process.env.ACCENT_100,
+      200: process.env.ACCENT_200,
+      300: process.env.ACCENT_300,
+      400: process.env.ACCENT_400,
+      500: process.env.ACCENT_500,
+      600: process.env.ACCENT_600,
+      700: process.env.ACCENT_700,
+      800: process.env.ACCENT_800,
+      900: process.env.ACCENT_900,
+    }}
+  />
+  <ColorItem
+    title="theme.color.black"
+    colors={{
+      Black: tailwindConfig.theme.colors.black,
+    }}
+  />
+  <ColorItem
+    title="theme.color.white"
+    colors={{
+      White: tailwindConfig.theme.colors.white,
+    }}
+  />
+</ColorPalette>

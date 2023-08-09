@@ -1,0 +1,8 @@
+fragment AddressParts on StripeAddress {
+  city
+  country
+  line1
+  line2
+  postalCode
+  state
+}

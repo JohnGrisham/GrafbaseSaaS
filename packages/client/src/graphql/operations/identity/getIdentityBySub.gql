@@ -1,0 +1,10 @@
+query IdentityBySub($sub: String!) {
+  identity(by: { sub: $sub }) {
+    ...IdentityParts
+    createdAt
+    updatedAt
+    user {
+      ...UserParts
+    }
+  }
+}

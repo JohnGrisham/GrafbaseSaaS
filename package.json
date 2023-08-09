@@ -1,0 +1,54 @@
+{
+  "name": "saas",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "grafbase"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "generate-tailwind-theme": "turbo run generate-tailwind-theme",
+    "codegen": "turbo run codegen",
+    "dev": "turbo run dev --parallel",
+    "dev:gql": "turbo run dev:gql",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "turbo run lint",
+    "storybook": "turbo run storybook"
+  },
+  "devDependencies": {
+    "@grafbase/sdk": "^0.3.0",
+    "@types/jest": "^29.5.0",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/prettier": "^2.7.2",
+    "@types/react": "^18.2.18",
+    "@types/react-dom": "^18.2.7",
+    "autoprefixer": "^10.4.13",
+    "concurrently": "^8.2.0",
+    "eslint-config-next": "^13.1.6",
+    "graphql": "^16.7.1",
+    "jest": "^29.5.0",
+    "jsonwebtoken": "^9.0.1",
+    "just-split": "^3.2.0",
+    "postcss": "^8.4.21",
+    "prettier": "latest",
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "stripe": "^12.16.0",
+    "tailwindcss": "^3.2.4",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "turbo": "1.8.3"
+  },
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=18.0.0"
+  },
+  "resolutions": {
+    "openid-client": "5.1.10"
+  },
+  "packageManager": "yarn@1.22.15"
+}

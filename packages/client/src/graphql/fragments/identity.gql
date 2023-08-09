@@ -1,0 +1,5 @@
+fragment IdentityParts on Identity {
+  id
+  sub
+  type
+}

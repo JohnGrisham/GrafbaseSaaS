@@ -1,0 +1,39 @@
+query UserSubscriptions($email: Email!) {
+  user(by: { email: $email }) {
+    ...UserParts
+    customer {
+      id
+      subscriptions {
+        nodes {
+          id
+          canceledAt
+          items {
+            nodes {
+              id
+              quantity
+              price {
+                id
+                active
+                currency
+                recurring {
+                  interval
+                }
+                unitAmount
+                product {
+                  ... on StripeProduct {
+                    ...ProductParts
+                  }
+                  ... on StripeDeletedProduct {
+                    id
+                    deleted
+                  }
+                  __typename
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

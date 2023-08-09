@@ -1,0 +1,16 @@
+fragment ProductParts on StripeProduct {
+  id
+  active
+  created
+  description
+  images
+  livemode
+  metadata
+  name
+  object
+  shippable
+  statementDescriptor
+  unitLabel
+  updated
+  url
+}

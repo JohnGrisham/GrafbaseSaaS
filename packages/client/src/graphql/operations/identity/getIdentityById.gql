@@ -1,0 +1,10 @@
+query IdentityById($id: ID!) {
+  identity(by: { id: $id }) {
+    ...IdentityParts
+    createdAt
+    updatedAt
+    user {
+      ...UserParts
+    }
+  }
+}

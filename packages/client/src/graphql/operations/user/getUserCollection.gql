@@ -1,0 +1,28 @@
+query UserCollection($first: Int, $last: Int, $before: String, $after: String) {
+  userCollection(first: $first, last: $last, before: $before, after: $after) {
+    edges {
+      node {
+        ...UserParts
+        createdAt
+        updatedAt
+        customer {
+          id
+        }
+        identities(first: 100) {
+          edges {
+            node {
+              ...IdentityParts
+            }
+            cursor
+          }
+          pageInfo {
+            hasPreviousPage
+            hasNextPage
+            endCursor
+            startCursor
+          }
+        }
+      }
+    }
+  }
+}

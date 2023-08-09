@@ -1,0 +1,9 @@
+html:not(.dark) > body {
+  /* replace color */
+  background: white !important;
+}
+
+.dark > body {
+  /* replace color */
+  background: #232327 !important;
+}

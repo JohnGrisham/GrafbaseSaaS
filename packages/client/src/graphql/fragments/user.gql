@@ -1,0 +1,5 @@
+fragment UserParts on User {
+  id
+  email
+  name
+}

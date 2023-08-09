@@ -1,0 +1,20 @@
+{
+  "name": "tailwind-config",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --external react tailwindcss",
+    "dev": "tsup src/index.ts --format esm,cjs --dts --external react tailwindcss --watch",
+    "generate-tailwind-theme": "ts-node bin/generate-tailwind-theme"
+  },
+  "devDependencies": {
+    "tailwindcss": "*",
+    "tsup": "^6.1.3"
+  },
+  "dependencies": {
+    "@kodingdotninja/use-tailwind-breakpoint": "^0.0.5",
+    "nearest-color": "^0.4.4",
+    "tinycolor2": "^1.4.2"
+  }
+}

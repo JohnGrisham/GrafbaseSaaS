@@ -1,0 +1,17 @@
+query UserByID($id: ID!) {
+  user(by: { id: $id }) {
+    ...UserParts
+    createdAt
+    updatedAt
+    customer {
+      id
+    }
+    identities(first: 100) {
+      edges {
+        node {
+          ...IdentityParts
+        }
+      }
+    }
+  }
+}
