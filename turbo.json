@@ -16,7 +16,8 @@
         "auth#build",
         "client#build",
         "payments-client#build",
-        "payments-server#build"
+        "payments-server#build",
+        "ui#build"
       ]
     },
     "dev:gql": {
@@ -71,8 +72,11 @@
     "payments-client#build": {
       "dependsOn": []
     },
+    "ui#build": {
+      "dependsOn": []
+    },
     "web#build": {
-      "dependsOn": [],
+      "dependsOn": ["ui#build"],
       "env": [
         "AUTH_BEARER_TOKEN",
         "NEXT_PUBLIC_AWS_COGNITO_REGION",
