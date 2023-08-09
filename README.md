@@ -9,9 +9,8 @@ This Turborepo includes the following packages/apps:
 ### Apps and Packages
 
 - `grafbase`: [Grafbase](https://grafbase.com/) Managed GQL service
-- `docs`: a [Next.js](https://nextjs.org) app with [Tailwind CSS](https://tailwindcss.com/)
-- `web`: another [Next.js](https://nextjs.org) app with [Tailwind CSS](https://tailwindcss.com/)
-- `ui`: a React component library with [Tailwind CSS](https://tailwindcss.com/) shared by both `web` and `docs` applications
+- `web`: a [Next.js](https://nextjs.org) app with [Tailwind CSS](https://tailwindcss.com/)
+- `ui`: a React component library with [Tailwind CSS](https://tailwindcss.com/) shared by applications
 - `auth`: shared [Auth.js](https://authjs.dev) configuration
 - `client`: graphql client configuration, types, operations and provider
 - `core`: shared utilites and other common logic
