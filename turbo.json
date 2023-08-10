@@ -72,7 +72,8 @@
       "dependsOn": []
     },
     "ui#build": {
-      "dependsOn": []
+      "dependsOn": [],
+      "env": ["NEXT_PUBLIC_ROOT_URL"]
     },
     "web#build": {
       "dependsOn": ["ui#build"],
