@@ -70,7 +70,6 @@ NEXT_PUBLIC_ROOT_URL=http://localhost:3000
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=%{Stripe Publishable Key}
 NEXT_PUBLIC_USER_POOL_ID=${user pool ID}
 NEXT_PUBLIC_USER_POOL_CLIENT_ID=${Client ID}
-NEXT_PUBLIC_MULTIDOMAIN=false
 ```
 
 Start the development environment with `yarn dev`.

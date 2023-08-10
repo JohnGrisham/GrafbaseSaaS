@@ -1,11 +1,5 @@
 import type { UserByEmailQuery, UserByEmailQueryVariables } from 'client';
-import {
-  Account,
-  CallbacksOptions,
-  CookiesOptions,
-  EventCallbacks,
-  Profile,
-} from 'next-auth';
+import { Account, CallbacksOptions, EventCallbacks, Profile } from 'next-auth';
 import CredentialsProvider, {
   CredentialsConfig,
 } from 'next-auth/providers/credentials';
@@ -24,23 +18,6 @@ import { constructStripe } from 'payments-server';
 import { gql } from 'graphql-request';
 import jsonwebtoken from 'jsonwebtoken';
 import { isCognitoUser } from 'core';
-
-const hostName = new URL(process.env.NEXTAUTH_URL as string).hostname;
-const useSecureCookies = process.env.NEXTAUTH_URL?.startsWith('https://');
-const cookiePrefix = useSecureCookies ? '__Secure-' : '';
-
-export const crossDomainCookies: Partial<CookiesOptions> = {
-  sessionToken: {
-    name: `${cookiePrefix}next-auth.session-token`,
-    options: {
-      httpOnly: true,
-      sameSite: 'lax',
-      path: '/',
-      domain: hostName == 'localhost' ? hostName : '.' + hostName,
-      secure: useSecureCookies,
-    },
-  },
-};
 
 export const jwt: Partial<JWTOptions> = {
   encode: ({ secret, token }) => {

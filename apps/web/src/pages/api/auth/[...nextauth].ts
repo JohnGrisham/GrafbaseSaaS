@@ -8,9 +8,6 @@ export const authOptions: NextAuthOptions = {
   },
   providers,
   callbacks,
-  cookies: JSON.parse(process.env.NEXT_PUBLIC_MULTIDOMAIN ?? 'false')
-    ? crossDomainCookies
-    : undefined,
   events,
   jwt,
 };

@@ -56,8 +56,7 @@
       "env": ["API_ENDPOINT"]
     },
     "core#build": {
-      "dependsOn": [],
-      "env": ["NEXT_PUBLIC_ROOT_URL"]
+      "dependsOn": []
     },
     "payments-server#build": {
       "dependsOn": [],
@@ -84,7 +83,6 @@
         "ISSUER_URL",
         "NEXTAUTH_SECRET",
         "NEXT_PUBLIC_DYNAMIC_ROOT",
-        "NEXT_PUBLIC_MULTIDOMAIN",
         "NEXT_PUBLIC_ROOT_URL",
         "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_LIVE",
         "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",

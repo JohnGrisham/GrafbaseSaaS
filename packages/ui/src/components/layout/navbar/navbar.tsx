@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { Dropdown, DropdownItem } from '../../dropdown';
 import { SignOutParams, signOut, useSession } from 'next-auth/react';
-import { useRootDomain, useThemeContext } from '../../../hooks';
 import { useBreakpointEffect } from 'tailwind-config';
 import { Avatar } from '../../avatar';
 import { Button } from '../../button';
@@ -13,6 +12,7 @@ import cn from 'classnames';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { isAuthScreen } from 'core';
 import { usePathname } from 'next/navigation';
+import { useThemeContext } from '../../../hooks';
 
 export interface NavItem {
   id: string;
@@ -51,7 +51,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const { data: session, status } = useSession();
   const { isDarkMode, setDarkMode } = useThemeContext();
-  const isRootDomain = useRootDomain();
   const pathname = usePathname();
 
   const navbarStyles = React.useMemo(() => {
@@ -125,10 +124,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       setMobileMenuOpen(false);
     }
   });
-
-  if (!isRootDomain && status !== 'authenticated' && !session) {
-    return null;
-  }
 
   return (
     <nav className={navbarStyles}>
