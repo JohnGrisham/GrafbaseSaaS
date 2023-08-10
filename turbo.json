@@ -75,7 +75,7 @@
       "env": ["NEXT_PUBLIC_ROOT_URL"]
     },
     "web#build": {
-      "dependsOn": ["ui#build"],
+      "dependsOn": ["auth#build", "core#build", "ui#build"],
       "env": [
         "AUTH_BEARER_TOKEN",
         "NEXT_PUBLIC_AWS_COGNITO_REGION",

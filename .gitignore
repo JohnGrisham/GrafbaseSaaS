@@ -16,6 +16,7 @@ build
 # misc
 .DS_Store
 *.pem
+.vercel
 
 # debug
 npm-debug.log*
@@ -41,3 +42,4 @@ dist/
 
 # parcel
 .parcel-cache
+.env*.local
