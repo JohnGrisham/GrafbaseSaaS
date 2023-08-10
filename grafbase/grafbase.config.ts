@@ -36,8 +36,9 @@ const user = g.model('User', {
     .optional(),
   customer: g
     .ref(new Type('StripeCustomer'))
+    .optional()
     .resolver('stripe/customer/byEmail'),
-  cognitoUser: g.ref(cognitoUser).resolver('cognito/user/byEmail'),
+  cognitoUser: g.ref(cognitoUser).optional().resolver('cognito/user/byEmail'),
 });
 
 const identity = g.model('Identity', {
