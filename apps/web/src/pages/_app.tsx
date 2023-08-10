@@ -25,7 +25,7 @@ const STRIPE_PUBLISHABLE_KEY =
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ??
   '';
 
-Auth.configure({
+const authConfig = {
   region: process.env.NEXT_PUBLIC_AWS_COGNITO_REGION as string,
   mandatorySignIn: false,
   userPoolId: process.env.NEXT_PUBLIC_USER_POOL_ID as string,
@@ -37,7 +37,11 @@ Auth.configure({
     domain: process.env.NEXT_PUBLIC_COGNITO_DOMAIN as string,
     responseType: 'code',
   },
-});
+};
+
+console.log({ authConfig });
+
+Auth.configure(authConfig);
 
 export interface MyAppProps extends AppProps {
   Component: any;
