@@ -16,8 +16,7 @@
         "auth#build",
         "client#build",
         "payments-client#build",
-        "payments-server#build",
-        "ui#build"
+        "payments-server#build"
       ]
     },
     "dev:gql": {
