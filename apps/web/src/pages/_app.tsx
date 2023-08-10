@@ -39,8 +39,6 @@ const authConfig = {
   },
 };
 
-console.log({ authConfig });
-
 Auth.configure(authConfig);
 
 export interface MyAppProps extends AppProps {
