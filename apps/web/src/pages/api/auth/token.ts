@@ -10,6 +10,6 @@ export default async function handler(
   if (token) {
     res.json({ token });
   } else {
-    res.status(401).send('Unauthorized');
+    res.status(401).send({ response: 'Unauthorized' });
   }
 }
