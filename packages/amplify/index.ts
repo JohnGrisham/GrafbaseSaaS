@@ -1,7 +1,9 @@
 import { Auth } from '@aws-amplify/auth';
+import { Logger } from '@aws-amplify/core';
 
 export const configure = async () => {
   try {
+    Logger.LOG_LEVEL = 'DEBUG';
     console.log('initializing auth...');
     const authConfig = {
       region: process.env.AWS_COGNITO_REGION as string,
