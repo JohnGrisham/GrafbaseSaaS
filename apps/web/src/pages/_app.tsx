@@ -3,6 +3,7 @@ import '../styles/globals.css';
 import 'ui/styles.css';
 import type { AppProps } from 'next/app';
 import { Body, LoadingProvider, SessionProvider, ThemeProvider } from 'ui';
+import { useEffect, useState } from 'react';
 import { configure } from 'amplify';
 import { StripeClient } from 'payments-client';
 import dynamic from 'next/dynamic';
@@ -32,6 +33,18 @@ export interface MyAppProps extends AppProps {
 }
 
 export default function MyApp({ Component, pageProps }: MyAppProps) {
+  const [authInitialized, setAuthInitialized] = useState(false);
+
+  useEffect(() => {
+    const setupAuth = async () => {
+      const isInitialized = await configure();
+      setAuthInitialized(isInitialized);
+    };
+    if (!authInitialized) {
+      setupAuth();
+    }
+  }, [authInitialized]);
+
   return (
     <SessionProvider requiresAuth={Component.auth}>
       <GraphqlClient>
