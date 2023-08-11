@@ -5,6 +5,10 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
     },
+    "clean": {
+      "cache": false,
+      "dependsOn": []
+    },
     "codegen": {
       "cache": false,
       "dependsOn": []
@@ -35,7 +39,7 @@
       "dependsOn": []
     },
     "auth#build": {
-      "dependsOn": ["client#build"],
+      "dependsOn": ["amplify#build", "client#build"],
       "env": [
         "API_KEY",
         "COGNITO_CLIENT_ID",
@@ -71,7 +75,7 @@
       "dependsOn": []
     },
     "ui#build": {
-      "dependsOn": [],
+      "dependsOn": ["amplify#build"],
       "env": ["NEXT_PUBLIC_ROOT_URL"]
     },
     "web#build": {
@@ -102,6 +106,15 @@
         "COGNITO_USER_POOL_ID",
         "STRIPE_SECRET_KEY",
         "STRIPE_SECRET_KEY_LIVE"
+      ]
+    },
+    "amplify#build": {
+      "dependsOn": [],
+      "env": [
+        "AWS_COGNITO_REGION",
+        "COGNITO_DOMAIN",
+        "COGNITO_USER_POOL_ID",
+        "COGNITO_USER_POOL_CLIENT_ID"
       ]
     },
     "lint": {

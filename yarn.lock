@@ -57,7 +57,7 @@
   dependencies:
     default-browser-id "3.0.0"
 
-"@aws-amplify/auth@*", "@aws-amplify/auth@^4.6.6":
+"@aws-amplify/auth@^4.6.6":
   version "4.6.17"
   resolved "https://registry.yarnpkg.com/@aws-amplify/auth/-/auth-4.6.17.tgz#5030e515467d2f9469eaa388a46370c7d5648772"
   integrity sha512-KIWHP6qODphwtzyJ6jmcSQewH0a8dOOsQ35OtAALwmPNEaftGmoUjm8wMHAtyH3EwWv1iknhPwMVzmGylr+l1A==

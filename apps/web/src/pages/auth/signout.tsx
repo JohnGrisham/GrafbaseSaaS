@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Auth } from '@aws-amplify/auth';
+import { Auth } from 'amplify';
 
 const Signout: React.FC = () => {
   React.useEffect(() => {

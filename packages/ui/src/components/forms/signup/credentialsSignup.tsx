@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Alert } from '../../alert';
-import { Auth } from '@aws-amplify/auth';
+import { Auth } from 'amplify';
 import { Field } from '../input';
 import { Form } from '../form';
 import { Loading } from '../../layout';

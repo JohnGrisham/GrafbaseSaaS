@@ -1,19 +1,18 @@
 {
-  "name": "auth",
+  "name": "amplify",
   "version": "0.0.0",
+  "private": true,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist"
   },
-  "license": "MIT",
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "build": "tsup index.ts --format esm,cjs --dts",
+    "dev": "tsup index.ts --format esm,cjs --dts --watch",
     "clean": "rm -rf dist"
   },
   "devDependencies": {
-    "@types/simple-oauth2": "2.2.1",
     "dotenv": "^16.0.1",
     "esbuild": "^0.15.5",
     "eslint": "^7.32.0",
@@ -23,13 +22,6 @@
     "typescript": "^4.5.2"
   },
   "dependencies": {
-    "amplify": "*",
-    "client": "*",
-    "core": "*",
-    "graphql": "*",
-    "graphql-request": "^4.3.0",
-    "jsonwebtoken": "*",
-    "next-auth": "^4.19.2",
-    "payments-server": "*"
+    "@aws-amplify/auth": "^4.6.6"
   }
 }
