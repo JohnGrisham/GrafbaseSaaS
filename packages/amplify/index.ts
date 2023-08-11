@@ -2,6 +2,7 @@ import { Auth } from '@aws-amplify/auth';
 
 export const configure = async () => {
   try {
+    console.log('initializing auth...');
     const authConfig = {
       region: process.env.AWS_COGNITO_REGION as string,
       mandatorySignIn: false,
@@ -17,7 +18,7 @@ export const configure = async () => {
     };
 
     await Auth.configure(authConfig);
-
+    console.log('auth initialized');
     return true;
   } catch (err: any) {
     console.error(err.message);
