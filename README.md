@@ -11,6 +11,7 @@ This Turborepo includes the following packages/apps:
 - `grafbase`: [Grafbase](https://grafbase.com/) Managed GQL service
 - `web`: a [Next.js](https://nextjs.org) app with [Tailwind CSS](https://tailwindcss.com/)
 - `ui`: a React component library with [Tailwind CSS](https://tailwindcss.com/) shared by applications
+- `amplify`: a package for managing shared [Amplify](https://docs.amplify.aws) config/logic
 - `auth`: shared [Auth.js](https://authjs.dev) configuration
 - `client`: graphql client configuration, types, operations and provider
 - `core`: shared utilites and other common logic
@@ -61,15 +62,11 @@ The grafbase cli can be ran to use the pathfinder playground using `yarn dev:gql
 `apps/web/.env` example
 
 ```
-NEXT_PUBLIC_AWS_COGNITO_REGION=${AWS Region}
-NEXT_PUBLIC_COGNITO_DOMAIN=https://${your-app}.auth.${region}.amazoncognito.com
 ISSUER_URL=https://grafbase.com
 NEXTAUTH_SECRET={Next Auth Secret}
 NEXTAUTH_URL=http://localhost:3000
 NEXT_PUBLIC_ROOT_URL=http://localhost:3000
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=%{Stripe Publishable Key}
-NEXT_PUBLIC_USER_POOL_ID=${user pool ID}
-NEXT_PUBLIC_USER_POOL_CLIENT_ID=${Client ID}
 ```
 
 Start the development environment with `yarn dev`.
@@ -83,6 +80,19 @@ API_ENDPOINT=https://{your-project}.grafbase.app/graphql
 ```
 
 Run codegen automatic type generation with `yarn codegen` while `yarn dev:gql` is running in another terminal.
+
+### Amplify
+
+When using Amplify in other packages the `configure` method must be called at the top of the file.
+
+`packages/amplify/.env` example
+
+```
+COGNITO_REGION=${AWS Region}
+COGNITO_DOMAIN=https://${your-app}.auth.${region}.amazoncognito.com
+COGNITO_USER_POOL_ID=${user pool ID}
+COGNITO_USER_POOL_CLIENT_ID=${Client ID}
+```
 
 ### Auth
 

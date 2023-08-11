@@ -81,20 +81,11 @@
     "web#build": {
       "dependsOn": ["auth#build", "core#build", "ui#build"],
       "env": [
-        "AUTH_BEARER_TOKEN",
-        "NEXT_PUBLIC_AWS_COGNITO_REGION",
-        "NEXT_PUBLIC_COGNITO_DOMAIN",
         "ISSUER_URL",
         "NEXTAUTH_SECRET",
-        "NEXT_PUBLIC_DYNAMIC_ROOT",
         "NEXT_PUBLIC_ROOT_URL",
         "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_LIVE",
-        "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
-        "NEXT_PUBLIC_USER_POOL_ID",
-        "NEXT_PUBLIC_USER_POOL_CLIENT_ID",
-        "NODE_ENV",
-        "TEAM_ID_VERCEL",
-        "VERCEL"
+        "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"
       ]
     },
     "grafbase#build": {
