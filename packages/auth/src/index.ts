@@ -12,12 +12,14 @@ import {
 import { graphQLClient } from 'client';
 import { JWTOptions } from 'next-auth/jwt';
 import { OAuthUserConfig } from 'next-auth/providers';
-import { Auth } from 'amplify';
+import { Auth, configure } from 'amplify';
 import { JWT } from 'next-auth/jwt';
 import { constructStripe } from 'payments-server';
 import { gql } from 'graphql-request';
 import jsonwebtoken from 'jsonwebtoken';
 import { isCognitoUser } from 'core';
+
+configure();
 
 export const jwt: Partial<JWTOptions> = {
   encode: ({ secret, token }) => {
