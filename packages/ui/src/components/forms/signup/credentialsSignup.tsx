@@ -1,11 +1,13 @@
 import * as React from 'react';
+import { Auth, configure } from 'amplify';
 import { Alert } from '../../alert';
-import { Auth } from 'amplify';
 import { Field } from '../input';
 import { Form } from '../form';
 import { Loading } from '../../layout';
 import { RegistrationFlow } from '../registration';
 import { useLoadingContext } from '../../../hooks';
+
+configure();
 
 enum RegistrationStatus {
   COMPLETE = 'COMPLETE',

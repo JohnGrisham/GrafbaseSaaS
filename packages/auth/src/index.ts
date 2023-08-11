@@ -1,5 +1,6 @@
 import type { UserByEmailQuery, UserByEmailQueryVariables } from 'client';
 import { Account, CallbacksOptions, EventCallbacks, Profile } from 'next-auth';
+import { Auth, configure } from 'amplify';
 import CredentialsProvider, {
   CredentialsConfig,
 } from 'next-auth/providers/credentials';
@@ -12,7 +13,6 @@ import {
 import { graphQLClient } from 'client';
 import { JWTOptions } from 'next-auth/jwt';
 import { OAuthUserConfig } from 'next-auth/providers';
-import { Auth, configure } from 'amplify';
 import { JWT } from 'next-auth/jwt';
 import { constructStripe } from 'payments-server';
 import { gql } from 'graphql-request';
