@@ -56,8 +56,8 @@ export const credentials = (config?: CredentialsConfig) =>
     async authorize(credentials) {
       try {
         const { username = '', password = '' } = { ...credentials };
-
-        console.log({ creds: Auth.Credentials.get() });
+        const creds = await Auth.Credentials.get();
+        console.log({ creds });
         configure();
 
         const cognitoUser = await Auth.signIn({
