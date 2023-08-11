@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Accordion, Button, useAuthSession } from 'ui';
 import { StripeProduct, useGetUserSubscriptions } from 'client';
-import Link from 'next/link';
 import { useState, ReactNode } from 'react';
 
 const ROOT = process.env.NEXT_PUBLIC_ROOT_URL as string;
@@ -16,12 +15,12 @@ interface Props {
 function Card({ title, description, footer, children }: Props) {
   return (
     <Accordion header={title} initialCollapsed={false}>
-      <div className="p m-auto my-8 w-full max-w-3xl rounded-md border border-zinc-700">
+      <div className="w-full max-w-3xl m-auto my-8 border rounded-md p border-zinc-700">
         <div className="px-5 py-4 dark:bg-white">
           <p className="text-zinc-400">{description}</p>
           {children}
         </div>
-        <div className="rounded-b-md border-t border-zinc-700 bg-zinc-900 p-4 text-white">
+        <div className="p-4 text-white border-t rounded-b-md border-zinc-700 bg-zinc-900">
           {footer}
         </div>
       </div>
@@ -93,12 +92,12 @@ export default function Account() {
 
   return (
     <section className="mb-32 min-w-[60%] bg-inherit">
-      <div className="mx-auto max-w-6xl px-4 pt-8 pb-8 sm:px-6 sm:pt-24 lg:px-8">
+      <div className="max-w-6xl px-4 pt-8 pb-8 mx-auto sm:px-6 sm:pt-24 lg:px-8">
         <div className="sm:align-center dark:text-white sm:flex sm:flex-col">
           <h1 className="text-4xl font-extrabold sm:text-center sm:text-6xl">
             Account
           </h1>
-          <p className="m-auto mt-5 max-w-2xl text-xl sm:text-center sm:text-2xl">
+          <p className="max-w-2xl m-auto mt-5 text-xl sm:text-center sm:text-2xl">
             We partnered with Stripe for a simplified billing.
           </p>
         </div>
@@ -133,7 +132,7 @@ export default function Account() {
         >
           <div className="mt-8 mb-4 text-xl font-semibold text-zinc-600">
             {loading ? (
-              <div className="mb-6 h-12">...</div>
+              <div className="h-12 mb-6">...</div>
             ) : (
               subscription &&
               !subscription.canceled &&
@@ -154,7 +153,7 @@ export default function Account() {
             {data.user.name ? (
               `${data.user.name}`
             ) : (
-              <div className="mb-6 h-8">...</div>
+              <div className="h-8 mb-6">...</div>
             )}
           </div>
         </Card>
