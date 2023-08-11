@@ -114,7 +114,8 @@
         "AWS_COGNITO_REGION",
         "COGNITO_DOMAIN",
         "COGNITO_USER_POOL_ID",
-        "COGNITO_USER_POOL_CLIENT_ID"
+        "COGNITO_USER_POOL_CLIENT_ID",
+        "NEXT_PUBLIC_ROOT_URL"
       ]
     },
     "lint": {

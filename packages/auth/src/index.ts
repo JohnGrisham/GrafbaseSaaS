@@ -12,7 +12,7 @@ import {
 import { graphQLClient } from 'client';
 import { JWTOptions } from 'next-auth/jwt';
 import { OAuthUserConfig } from 'next-auth/providers';
-import { Auth } from 'amplify';
+import { Auth, configure } from 'amplify';
 import { JWT } from 'next-auth/jwt';
 import { constructStripe } from 'payments-server';
 import { gql } from 'graphql-request';
@@ -56,6 +56,9 @@ export const credentials = (config?: CredentialsConfig) =>
     async authorize(credentials) {
       try {
         const { username = '', password = '' } = { ...credentials };
+
+        console.log({ creds: Auth.Credentials.get() });
+        configure();
 
         const cognitoUser = await Auth.signIn({
           username,
