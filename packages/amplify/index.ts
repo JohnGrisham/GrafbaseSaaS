@@ -1,7 +1,6 @@
 import { Auth } from '@aws-amplify/auth';
 
 export const configure = () => {
-  console.log('configuring amplify...');
   const authConfig = {
     region: process.env.AWS_COGNITO_REGION as string,
     mandatorySignIn: false,

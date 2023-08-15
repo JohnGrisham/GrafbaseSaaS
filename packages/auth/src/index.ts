@@ -18,6 +18,7 @@ import { constructStripe } from 'payments-server';
 import { gql } from 'graphql-request';
 import jsonwebtoken from 'jsonwebtoken';
 import { isCognitoUser } from 'core';
+import { refreshAccessToken } from './utils/refreshAccessToken';
 
 configure();
 
@@ -82,6 +83,7 @@ export const credentials = (config?: CredentialsConfig) =>
 
 export const google = (config?: OAuthUserConfig<GoogleProfile>) =>
   GoogleProvider({
+    authorization: { params: { access_type: 'offline', prompt: 'consent' } },
     clientId: process.env.GOOGLE_CLIENT_ID as string,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     ...config,
@@ -123,24 +125,46 @@ export const callbacks: Partial<CallbacksOptions<Profile, Account>> = {
       return false;
     }
   },
-  async jwt({ account, user, token }) {
+  async jwt({ account, user, token, trigger }) {
     if (user) {
       let currentUser = user as unknown;
-      let tokenResponse: JWT = token;
+
+      if (trigger === 'update') {
+        const existingToken = token as any;
+
+        if (Date.now() < existingToken.accessTokenExpires) {
+          if (isCognitoUser(currentUser)) {
+            // Refresh the token for Cognito users.
+            Auth.currentAuthenticatedUser();
+          }
+
+          return token;
+        }
+      }
 
       if (isCognitoUser(currentUser) && account?.type === 'credentials') {
         const session = currentUser.getSignInUserSession();
 
-        tokenResponse = {
+        return {
           ...token,
           sub: currentUser.id,
           email: currentUser.email,
           accessToken: session?.getAccessToken().getJwtToken(),
+          accessTokenExpires: session?.getAccessToken().getExpiration(),
           refreshToken: session?.getRefreshToken().getToken(),
+        };
+      } else if (account && user) {
+        const expiration = account.expires_at ?? Date.now() / 1000 + 3600;
+
+        return {
+          ...token,
+          accessToken: account.access_token,
+          accessTokenExpires: Math.floor(expiration),
+          refreshToken: account.refresh_token,
         };
       }
 
-      return Promise.resolve(tokenResponse);
+      return refreshAccessToken(token);
     }
 
     return Promise.resolve(token);
