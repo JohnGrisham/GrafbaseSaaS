@@ -126,35 +126,38 @@ export const callbacks: Partial<CallbacksOptions<Profile, Account>> = {
     }
   },
   async jwt({ account, user, token, trigger }) {
-    if (user) {
-      let currentUser = user as unknown;
+    const currentTimestampInSeconds = Math.floor(Date.now() / 1000);
+    const defaultExpiration = currentTimestampInSeconds + 3600;
+    let currentUser = user as unknown;
 
-      if (trigger === 'update') {
-        const existingToken = token as any;
+    if (trigger === 'update' || trigger === undefined) {
+      const existingToken = token as any;
 
-        if (Date.now() < existingToken.accessTokenExpires) {
-          if (isCognitoUser(currentUser)) {
-            // Refresh the token for Cognito users.
-            Auth.currentAuthenticatedUser();
-          }
-
-          return token;
+      if (currentTimestampInSeconds < existingToken.accessTokenExpires) {
+        if (currentUser && isCognitoUser(currentUser)) {
+          // Refresh the token for Cognito users.
+          Auth.currentAuthenticatedUser();
         }
-      }
 
+        return token;
+      }
+    }
+
+    if (currentUser) {
       if (isCognitoUser(currentUser) && account?.type === 'credentials') {
         const session = currentUser.getSignInUserSession();
 
         return {
           ...token,
-          sub: currentUser.id,
+          sub: currentUser.getUsername(),
           email: currentUser.email,
           accessToken: session?.getAccessToken().getJwtToken(),
-          accessTokenExpires: session?.getAccessToken().getExpiration(),
+          accessTokenExpires:
+            session?.getAccessToken().getExpiration() ?? defaultExpiration,
           refreshToken: session?.getRefreshToken().getToken(),
         };
-      } else if (account && user) {
-        const expiration = account.expires_at ?? Date.now() / 1000 + 3600;
+      } else if (account && currentUser) {
+        const expiration = account.expires_at ?? defaultExpiration;
 
         return {
           ...token,
