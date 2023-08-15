@@ -163,11 +163,9 @@ export const callbacks: Partial<CallbacksOptions<Profile, Account>> = {
           refreshToken: account.refresh_token,
         };
       }
-
-      return refreshAccessToken(token);
     }
 
-    return Promise.resolve(token);
+    return refreshAccessToken(token);
   },
   async session({ session, token: { sub, email, name, picture } }) {
     if (sub) {
